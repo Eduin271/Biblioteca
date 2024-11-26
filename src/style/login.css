@@ -1,0 +1,79 @@
+/* Estilo general para centrar el contenedor */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+  }
+  
+  /* Estilo del contenedor principal */
+  .login-box {
+    width: 320px;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Ícono superior */
+  .login-icon img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  /* Encabezado */
+  h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  /* Estilo del formulario */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Inputs de texto */
+  .login-input {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  .login-input:focus {
+    border-color: #a599e9;
+  }
+  
+  /* Botón de inicio de sesión */
+  .login-button {
+    padding: 10px 15px;
+    background-color: #a599e9;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .login-button:hover {
+    background-color: #9178e6;
+  }
+  
+  /* Mensaje de error */
+  .login-error {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+  }
+  

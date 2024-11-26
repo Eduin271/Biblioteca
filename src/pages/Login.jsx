@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../style/login.css"; // Importar los estilos
+import usuarioIcon from "../assets/images/usuario.png";
 
 const Login = () => {
   const [usuario, setUsuario] = useState("");
@@ -39,31 +41,38 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h2>Inicio de Sesión</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Usuario</label>
+      <div className="login-box">
+        <div className="login-icon">
+          <img src={usuarioIcon} alt="User Icon" className="login-icon" />
+        </div>
+        <h2>Inicio de Sesión</h2>
+        <form onSubmit={handleLogin} className="login-form">
           <input
+        
             type="text"
+            placeholder="Usuario"
             value={usuario}
             onChange={(e) => setUsuario(e.target.value)}
+            className="login-input"
             required
           />
-        </div>
-        <div>
-          <label>Contraseña</label>
           <input
             type="password"
+            placeholder="Contraseña"
             value={contrasena}
             onChange={(e) => setContrasena(e.target.value)}
+            className="login-input"
             required
           />
-        </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">Iniciar Sesión</button>
-      </form>
+          {error && <p className="login-error">{error}</p>}
+          <button type="submit" className="login-button">
+            Iniciar Sesión
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
 
 export default Login;
+
