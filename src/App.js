@@ -2,10 +2,15 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login"; // Pantalla de login
 import Principal from "./pages/Principal"; // Pantalla principal
-import Resultados from "./pages/ResultadoBusqueda"; // Pantalla de resultados
+import Devoluciones from "./pages/Devoluciones"; // Pantalla de resultados
 import Prestamos from "./pages/Prestamos"; // Pantalla de préstamos
-import GestionarLibros from "./pages/GestionarLibros"; // Pantalla de gestión de libros
+import GestionLibros from "./pages/GestionLibros"; // Pantalla de gestión de libros
+import GestionCliente from "./pages/GestionCliente"; // Pantalla de gestión de Clientes
 import PrivateRoute from "./components/PrivateRoute"; // Componente de ruta privada
+import AgregarLibro from "./components/AgregarLibro";//Pantalla para agregar libros.
+import EditarLibro from "./components/EditarLibro";//Pantalla para Editar libros.
+
+
 
 const App = () => {
   return (
@@ -24,10 +29,10 @@ const App = () => {
           }
         />
         <Route
-          path="/resultados"
+          path="/devoluciones"
           element={
             <PrivateRoute>
-              <Resultados />
+              <Devoluciones />
             </PrivateRoute>
           }
         />
@@ -43,10 +48,35 @@ const App = () => {
           path="/gestionar-libros"
           element={
             <PrivateRoute>
-              <GestionarLibros />
+              <GestionLibros />
             </PrivateRoute>
           }
         />
+         <Route
+          path="/gestionar-cliente"
+          element={
+            <PrivateRoute>
+              <GestionCliente />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/agregar-libro"
+          element={
+            <PrivateRoute>
+              <AgregarLibro />
+            </PrivateRoute>
+          }
+        />
+       <Route
+        path="/editar-libro/:idLibro"
+        element={
+          <PrivateRoute>
+            <EditarLibro />
+          </PrivateRoute>
+  }
+/>
+
       </Routes>
     </Router>
   );

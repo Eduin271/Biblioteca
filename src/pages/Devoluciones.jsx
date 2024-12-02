@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ResultadoBusqueda = () => {
+const Devoluciones = () => {
     return (
         <div>
-            <h1>Pantalla Resultado de Busqueda</h1>
+            <h1>Pantalla de Devoluciones</h1>
             <p>Bienvenido al sistema de biblioteca.</p>
         </div>
     );
 };
 
-export default ResultadoBusqueda;
+export default Devoluciones;

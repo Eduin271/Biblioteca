@@ -56,13 +56,13 @@ const Principal = () => {
       {/* Barra de navegación */}
       <nav className="navigation-bar">
         <Link to="/devoluciones">Devoluciones</Link>
-        <Link to="/agregar-cliente">Agregar Cliente</Link>
-        <Link to="/agregar-libro">Agregar Libro</Link>
-        <Link to="/eliminar-libro">Eliminar Libro</Link>
+        <Link to="/gestionar-cliente">Gestion Cliente</Link>
+        <Link to="/gestionar-libros">Gestion Libro</Link>
+        <Link to="/prestamos">Prestamos </Link>
       </nav>
 
-      {/* Título "Más Buscados" */}
-      <h2>Más Buscados</h2>
+      {/* Título "Más Prestados" */}
+      <h2>Mas Prestados</h2>
       {error && <p style={{ color: "red" }}>{error}</p>} {/* Mostrar mensaje de error si ocurre */}
 
       {/* Lista de los 10 libros más prestados */}

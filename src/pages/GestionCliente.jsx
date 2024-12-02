@@ -1,12 +1,12 @@
 import React from 'react';
 
-const GestionarLibros = () => {
+const GestionCliente = () => {
     return (
         <div>
-            <h1>Pantalla Gestion de libros</h1>
+            <h1>Pantalla de Clientes</h1>
             <p>Bienvenido al sistema de biblioteca.</p>
         </div>
     );
 };
 
-export default GestionarLibros;
+export default GestionCliente;

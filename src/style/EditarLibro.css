@@ -1,0 +1,77 @@
+.editar-libro-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .editar-libro-container h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .editar-libro-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .editar-libro-container label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  .editar-libro-container input,
+  .editar-libro-container select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .editar-libro-container input:focus,
+  .editar-libro-container select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .editar-libro-container .btn-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .editar-libro-container button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .editar-libro-container .btn-save {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .editar-libro-container .btn-save:hover {
+    background-color: #0056b3;
+  }
+  
+  .editar-libro-container .btn-cancel {
+    background-color: #f44336;
+    color: #fff;
+  }
+  
+  .editar-libro-container .btn-cancel:hover {
+    background-color: #c62828;
+  }
+  
