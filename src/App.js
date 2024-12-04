@@ -9,6 +9,7 @@ import GestionCliente from "./pages/GestionCliente"; // Pantalla de gestión de 
 import PrivateRoute from "./components/PrivateRoute"; // Componente de ruta privada
 import AgregarLibro from "./components/AgregarLibro";//Pantalla para agregar libros.
 import EditarLibro from "./components/EditarLibro";//Pantalla para Editar libros.
+import AgregarPrestamo from "./components/AgregarPrestamo";//Pantalla para agregar libros.
 
 
 
@@ -74,8 +75,16 @@ const App = () => {
           <PrivateRoute>
             <EditarLibro />
           </PrivateRoute>
-  }
-/>
+        }
+      />
+      <Route
+        path="/agregar-prestamo"
+        element={
+          <PrivateRoute>
+            <AgregarPrestamo />
+          </PrivateRoute>
+        }
+      />
 
       </Routes>
     </Router>
