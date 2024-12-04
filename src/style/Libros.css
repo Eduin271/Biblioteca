@@ -61,4 +61,59 @@ button:hover {
   font-size: 24px;
   font-weight: bold;
 }
+.gestion-libros .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Alinea verticalmente todos los elementos */
+  margin-bottom: 20px;
+}
+
+.gestion-libros .title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1; /* Ajusta la alineación vertical */
+}
+
+.gestion-libros .actions {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espacio entre los elementos del contenedor */
+}
+
+.gestion-libros .search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-grow: 1; /* Para que el buscador ocupe espacio adicional */
+}
+
+.gestion-libros .search-bar {
+  flex-grow: 1; /* Se ajusta al espacio disponible */
+  max-width: 300px; /* Limita su ancho máximo */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.gestion-libros .add-button {
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: none;
+}
+
+.gestion-libros .close-button {
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+  background-color: #ff0000;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 50%;
+}
+
 

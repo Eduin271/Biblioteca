@@ -4,6 +4,7 @@ import "../style/Libros.css";
 
 const GestionLibros = () => {
   const [libros, setLibros] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   const fetchLibros = async () => {
@@ -43,17 +44,39 @@ const GestionLibros = () => {
     navigate(`/editar-libro/${idLibro}`);
   };
 
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   useEffect(() => {
     fetchLibros();
   }, []);
 
+  const filteredLibros = libros.filter((libro) =>
+    libro.nombreLibro.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="gestion-libros">
       <div className="header">
-        <h2>Gestión de Libros</h2>
-        <Link to="/agregar-libro" className="add-button">
-          <span>+</span>
-        </Link>
+        <h2 className="title">Gestión de Libros</h2>
+        <div className="actions">
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="Buscar libro..."
+              value={searchTerm}
+              onChange={handleSearch}
+              className="search-bar"
+            />
+            <Link to="/agregar-libro" className="add-button">
+              Nuevo
+            </Link>
+          </div>
+          <button className="close-button" onClick={() => navigate("/principal")}>
+            X
+          </button>
+        </div>
       </div>
 
       <table>
@@ -65,7 +88,7 @@ const GestionLibros = () => {
           </tr>
         </thead>
         <tbody>
-          {libros.map((libro) => (
+          {filteredLibros.map((libro) => (
             <tr key={libro.idLibro}>
               <td>{libro.nombreLibro}</td>
               <td>{libro.Categoria}</td>
@@ -82,3 +105,8 @@ const GestionLibros = () => {
 };
 
 export default GestionLibros;
+
+
+
+
+

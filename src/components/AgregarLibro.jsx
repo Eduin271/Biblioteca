@@ -11,7 +11,7 @@ function AgregarLibro() {
 
   useEffect(() => {
     // Cargar las categorías y autores desde el servidor
-    fetch('/http://localhost/biblioteca-api/categorias.php')
+    fetch('http://localhost/biblioteca-api/editar-categoria.php')
       .then(response => response.json())
       .then(data => setCategorias(data.categorias || []))
       .catch(error => setError('Error al cargar categorías'));
