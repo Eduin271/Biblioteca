@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select"; // Importar React-Select
-import "../style/AgregarPrestamo.css";
+import "../style/AgregarDevolucion.css";
 
-const AgregarPrestamo = () => {
+const AgregarDevolucion = () => {
   const [empleados, setEmpleados] = useState([]);
   const [clientes, setClientes] = useState([]);
   const [bibliotecas, setBibliotecas] = useState([]);
-  const [libros, setLibros] = useState([]);
+  const [prestamos, setPrestamos] = useState([]);
   const [formData, setFormData] = useState({
     idEmpleado: null,
     idCliente: null,
     idBiblioteca: null,
-    idLibro: null,
-    fechaPrestamo: "",
+    idPrestamo: null,
+    fechaDevolucion: "",
     estado: "A",
   });
   const navigate = useNavigate();
@@ -25,21 +25,22 @@ const AgregarPrestamo = () => {
         const empleadosRes = await fetch("http://localhost/biblioteca-api/empleados.php");
         const clientesRes = await fetch("http://localhost/biblioteca-api/clientes.php");
         const bibliotecasRes = await fetch("http://localhost/biblioteca-api/bibliotecas.php");
-        const librosRes = await fetch("http://localhost/biblioteca-api/prestamo-libro.php");
+        const prestamosRes = await fetch("http://localhost/biblioteca-api/prestamos.php");
 
         const empleadosData = await empleadosRes.json();
         const clientesData = await clientesRes.json();
         const bibliotecasData = await bibliotecasRes.json();
-        const librosData = await librosRes.json();
+        const prestamosData = await prestamosRes.json();
+
+        if (prestamosData.success && Array.isArray(prestamosData.prestamos)) {
+          setPrestamos(prestamosData.prestamos);
+        } else {
+          console.error("Error: La respuesta de préstamos no es un array válido.");
+        }
 
         setEmpleados(empleadosData);
         setClientes(clientesData);
         setBibliotecas(bibliotecasData);
-        if (Array.isArray(librosData)) {
-          setLibros(librosData);
-        } else {
-          console.error("Error: La respuesta de libros no es un array válido.");
-        }
       } catch (error) {
         console.error("Error al cargar datos:", error);
       }
@@ -73,10 +74,13 @@ const AgregarPrestamo = () => {
         idEmpleado: formData.idEmpleado ? formData.idEmpleado.value : null,
         idCliente: formData.idCliente ? formData.idCliente.value : null,
         idBiblioteca: formData.idBiblioteca ? formData.idBiblioteca.value : null,
-        idLibro: formData.idLibro ? formData.idLibro.value : null,
+        idPrestamo: formData.idPrestamo ? formData.idPrestamo.value : null,
+        fechaDevolucion: formData.fechaDevolucion, // Aseguramos que este campo esté bien enviado
       };
 
-      const response = await fetch("http://localhost/biblioteca-api/prestamos.php", {
+      console.log("Datos a enviar:", dataToSend); // Para depuración
+
+      const response = await fetch("http://localhost/biblioteca-api/devoluciones.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataToSend),
@@ -92,10 +96,10 @@ const AgregarPrestamo = () => {
       console.log("Respuesta de la API:", data);
 
       if (data.success) {
-        alert("Préstamo registrado exitosamente");
-        navigate("/prestamos");
+        alert("Devolución registrada exitosamente");
+        navigate("/devoluciones");
       } else {
-        alert(`Error al registrar el préstamo: ${data.message}`);
+        alert(`Error al registrar la devolución: ${data.message}`);
       }
     } catch (error) {
       console.error("Error al enviar datos:", error);
@@ -104,8 +108,8 @@ const AgregarPrestamo = () => {
   };
 
   return (
-    <div className="agregar-prestamo">
-      <h2>Agregar Préstamo</h2>
+    <div className="agregar-devolucion">
+      <h2>Agregar Devolución</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Empleado:</label>
@@ -113,7 +117,7 @@ const AgregarPrestamo = () => {
             options={toSelectOptions(empleados, "nombre", "idEmpleado")}
             name="idEmpleado"
             onChange={handleChangeSelect}
-            value={formData.idEmpleado || null} // Pasar el objeto completo
+            value={formData.idEmpleado || null}
             placeholder="Seleccione un empleado"
           />
         </div>
@@ -138,23 +142,23 @@ const AgregarPrestamo = () => {
           />
         </div>
         <div className="form-group">
-          <label>Libro:</label>
+          <label>Préstamo:</label>
           <Select
-            options={toSelectOptions(libros, "nombreLibro", "idLibro")}
-            name="idLibro"
+            options={toSelectOptions(prestamos, "idPrestamo", "idPrestamo")}
+            name="idPrestamo"
             onChange={handleChangeSelect}
-            value={formData.idLibro || null}
-            placeholder="Seleccione un libro"
+            value={formData.idPrestamo || null}
+            placeholder="Seleccione un préstamo"
           />
         </div>
         <div className="form-group">
-          <label>Fecha del Préstamo:</label>
+          <label>Fecha de la Devolución:</label>
           <input
             type="date"
-            name="fechaPrestamo"
-            value={formData.fechaPrestamo || ""}
+            name="fechaDevolucion"
+            value={formData.fechaDevolucion || ""}
             onChange={(e) =>
-              setFormData((prevState) => ({ ...prevState, fechaPrestamo: e.target.value }))
+              setFormData((prevState) => ({ ...prevState, fechaDevolucion: e.target.value }))
             }
             required
           />
@@ -175,7 +179,7 @@ const AgregarPrestamo = () => {
         </div>
         <div className="buttons">
           <button type="submit">Guardar</button>
-          <button type="button" onClick={() => navigate("/prestamos")}>
+          <button type="button" onClick={() => navigate("/devoluciones")}>
             Cancelar
           </button>
         </div>
@@ -184,8 +188,7 @@ const AgregarPrestamo = () => {
   );
 };
 
-export default AgregarPrestamo;
-
+export default AgregarDevolucion;
 
 
 
