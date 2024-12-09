@@ -85,7 +85,7 @@ const EditarLibro = () => {
     };
 
     try {
-      const response = await fetch("http://localhost/biblioteca-api/editar-libro.php", {
+      const response = await fetch("http://localhost/biblioteca-api/libros.php", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedLibro),

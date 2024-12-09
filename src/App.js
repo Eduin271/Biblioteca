@@ -11,6 +11,7 @@ import AgregarLibro from "./components/AgregarLibro";//Pantalla para agregar lib
 import EditarLibro from "./components/EditarLibro";//Pantalla para Editar libros.
 import AgregarPrestamo from "./components/AgregarPrestamo";//Pantalla para agregar prestamo.
 import AgregarDevolucion from "./components/AgregarDevolucion";//Pantalla para agregar devolucion.
+import AgregarCliente from "./components/AgregarCliente";//Pantalla para agregar Cliente.
 
 
 
@@ -91,6 +92,14 @@ const App = () => {
         element={
           <PrivateRoute>
             <AgregarDevolucion />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/agregar-cliente"
+        element={
+          <PrivateRoute>
+            <AgregarCliente />
           </PrivateRoute>
         }
       />

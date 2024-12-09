@@ -32,6 +32,8 @@ const GestionClientes = () => {
   };
 
   const handleDelete = async (idCliente) => {
+    console.log("ID Cliente para eliminar:", idCliente); // Verificar que se reciba el idCliente
+
     if (window.confirm("¿Estás seguro de eliminar este cliente?")) {
       try {
         const response = await fetch(
@@ -45,15 +47,24 @@ const GestionClientes = () => {
             body: JSON.stringify({ idCliente }), // Envío del idCliente en el cuerpo de la solicitud
           }
         );
+
+        if (!response.ok) {
+          throw new Error(`Error en la respuesta: ${response.statusText}`);
+        }
+
         const data = await response.json();
+        console.log("Respuesta del backend:", data); // Verificar la respuesta del backend
+
         if (data.success) {
           alert("Cliente eliminado exitosamente");
           fetchClientes(); // Refrescar la lista de clientes después de la eliminación
         } else {
-          console.error(data.message);
+          console.error("Error al eliminar cliente:", data.message);
+          alert(`Error: ${data.message}`);
         }
       } catch (error) {
         console.error("Error al eliminar cliente:", error);
+        alert("Error al eliminar cliente. Intenta de nuevo.");
       }
     }
   };
@@ -114,5 +125,6 @@ const GestionClientes = () => {
 };
 
 export default GestionClientes;
+
 
 
